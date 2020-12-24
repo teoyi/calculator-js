@@ -28,5 +28,3 @@ function operate(operator, a, b){
         return divide(a,b); 
     };
 };
-
-console.log(operate('divide',4,-2))
