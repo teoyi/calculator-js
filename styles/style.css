@@ -7,7 +7,7 @@ body{
     flex-direction: column;
     /* outline-style: solid; */
     width: 350px;
-    height: 370px;
+    height: 44vh;
     border-radius:0.7em;
     overflow:hidden;
     font-family: Arial, Helvetica, sans-serif;
@@ -23,6 +23,27 @@ body{
     outline: None;
     padding-right: 10px;
 }
+
+.content{
+    display: grid; 
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+button{
+    font-size: 20px;
+    outline:None;
+    border: 0;
+    height: 75px;
+}
+
+button.func {
+    background-color:silver;
+    outline: None;
+}
+
+
+
 
 .content_container{
     display : flex; 
