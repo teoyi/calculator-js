@@ -33,13 +33,14 @@ body{
 button{
     font-size: 20px;
     outline:None;
-    border: 0;
+    border: silver solid 0.01em;
     height: 75px;
 }
 
 button.func {
     background-color:silver;
     outline: None;
+    border: rgba(0, 0, 0, 0.075) solid 0.01em;
 }
 
 
