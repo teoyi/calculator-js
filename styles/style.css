@@ -7,20 +7,28 @@ body{
     flex-direction: column;
     /* outline-style: solid; */
     width: 350px;
-    height: 44vh;
+    height: 47vh;
     border-radius:0.7em;
     overflow:hidden;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .display{
-    text-align : right;
-    height: 70px;
-    background-color: black;
+    height: 90px;
+    background-color: rgb(100, 100, 100);
     color: white;
-    font-size: 30px;
+    font-size: 20px;
     border: 0;
     outline: None;
+}
+
+#equation{
+    text-align: left;
+    padding-left: 10px;
+}
+
+#display{
+    text-align: right;
     padding-right: 10px;
 }
 
@@ -33,61 +41,19 @@ body{
 button{
     font-size: 20px;
     outline:None;
-    border: silver solid 0.01em;
+    border: 0;
     height: 75px;
+    background-color: rgb(41, 40, 40);
+    color: white;
 }
 
 button.func {
-    background-color:silver;
+    background-color:rgb(41, 40, 40);
     outline: None;
-    border: rgba(0, 0, 0, 0.075) solid 0.01em;
-}
-
-
-
-
-.content_container{
-    display : flex; 
-    flex-direction: row;
-    justify-content: center; 
-    /* outline-style: dotted; */
-}
-
-.numbers{
-    display : grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap : 0px; 
-    width: 210px;
-    height: 300px;
-    /* outline-color : black; */
-    /* outline-style: dotted; */
-}
-
-.numbers button{
-    padding: 15px 15px;
-    font-size: 20px;
-    outline: silver solid 0.01em;
     border: 0;
+    color :rgb(127, 193, 255);
 }
 
-.operator{
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap : 0px; 
-    /* outline-color : black; */
-    /* outline-style: dotted;  */
-    padding-left: 0px;
-    width: 140px;
-
+#equal{
+    grid-column: auto/span 2;
 }
-
-.operator button{
-    padding: 8px 8px;
-    font-size: 20px;
-    background-color: silver;
-    outline: rgba(0, 0, 0, 0.247) solid 0.01em;
-    border: 0;
-}
-
