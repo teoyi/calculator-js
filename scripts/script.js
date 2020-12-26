@@ -41,6 +41,7 @@ const digits = document.querySelectorAll('.digit');
 let eqn = '';
 let output = 0;
 
+// Button Click Functionality 
 digits.forEach(digit => {
     digit.addEventListener('click', function(){
         eqn += digit.textContent;
@@ -50,6 +51,7 @@ digits.forEach(digit => {
         return eqn;
     });
 });
+
 ops.forEach(op => {
     op.addEventListener('click', function(){
         eqn += op.textContent;
@@ -60,15 +62,16 @@ ops.forEach(op => {
     });
 });
 
-
 // Backspace Functionality
 const del = document.querySelector("#delete");
 del.addEventListener('click', function(){
     eqn = eqn.slice(0, -1);
     if (!eqn) {
         document.getElementById('equation').innerHTML = '---';
+        console.log('Returned to empty string')
     } else {
         document.getElementById('equation').innerHTML = eqn;
+        console.log('Popped!')
     };
 })
 
