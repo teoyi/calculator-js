@@ -25,6 +25,10 @@ function operate(operator, a, b){
     } else if (operator === 'multiply'){
         return multiply(a,b);
     } else if (operator === 'divide'){
-        return divide(a,b); 
+        if (b == 0){
+            return Nan;
+        } else {
+            return divide(a,b);
+        }
     };
 };
