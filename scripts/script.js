@@ -39,25 +39,46 @@ const ops = document.querySelectorAll('.op')
 const digits = document.querySelectorAll('.digit');
 
 let eqn = '';
-let displayNum = 0;
+let output = 0;
+
 digits.forEach(digit => {
     digit.addEventListener('click', function(){
         eqn += digit.textContent;
         document.getElementById('equation').innerHTML = '';
-        document.getElementById('equation').innerHTML += eqn;
-        console.log(eqn);
+        document.getElementById('equation').innerHTML = eqn;
+        // console.log(eqn);
         return eqn;
-        
     });
 });
 ops.forEach(op => {
     op.addEventListener('click', function(){
         eqn += op.textContent;
         document.getElementById('equation').innerHTML = '';
-        document.getElementById('equation').innerHTML += eqn;
-        console.log(eqn);
+        document.getElementById('equation').innerHTML = eqn;
+        // console.log(eqn);
         return eqn;
-        
     });
 });
+
+
+// Backspace Functionality
+const del = document.querySelector("#delete");
+del.addEventListener('click', function(){
+    eqn = eqn.slice(0, -1);
+    if (!eqn) {
+        document.getElementById('equation').innerHTML = '---';
+    } else {
+        document.getElementById('equation').innerHTML = eqn;
+    };
+})
+
+// Clear all Functionality 
+const clear = document.querySelector('#clear');
+clear.addEventListener('click', function(){
+    document.getElementById('equation').innerHTML = '---';
+    document.getElementById('result').innerHTML = '0';
+    eqn = '';
+    output = 0;
+    console.log('Cleared All')
+})
 
