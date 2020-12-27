@@ -68,10 +68,12 @@ del.addEventListener('click', function(){
     eqn = eqn.slice(0, -1);
     if (!eqn) {
         document.getElementById('equation').innerHTML = '---';
-        console.log('Returned to empty string')
+        console.log('Returned to empty string');
+        return eqn;
     } else {
         document.getElementById('equation').innerHTML = eqn;
-        console.log('Popped!')
+        console.log('Popped!');
+        return eqn;
     };
 })
 
@@ -83,5 +85,31 @@ clear.addEventListener('click', function(){
     eqn = '';
     output = 0;
     console.log('Cleared All')
-})
+});
 
+let num = '12+7-5×3÷5';
+
+let plus_pos = 0;
+let minus_pos = 0;
+let multiply_pos = 0;
+let divide_pos = 0;
+for (i = 0; i < num.length; i++) {
+    if (num[i] === '+'){
+        plus_pos = i;
+    } else if (num[i] === '-'){
+        minus_pos = i;
+    } else if (num[i] === '×'){
+        multiply_pos = i;
+    } else if (num[i] === '÷'){
+        divide_pos = i;
+    };
+};
+
+console.log(plus_pos, minus_pos, multiply_pos, divide_pos)
+
+
+
+const evaluate = document.querySelector('#equal')
+evaluate.addEventListener('click', function(){
+
+});
