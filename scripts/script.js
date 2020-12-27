@@ -47,17 +47,20 @@ digits.forEach(digit => {
         eqn += digit.textContent;
         document.getElementById('equation').innerHTML = '';
         document.getElementById('equation').innerHTML = eqn;
-        // console.log(eqn);
-        return eqn;
     });
 });
 
 ops.forEach(op => {
     op.addEventListener('click', function(){
-        eqn += op.textContent;
+        if (op.textContent === '÷'){
+            eqn += '/';
+        } else if (op.textContent === '×'){
+            eqn += '*';
+        } else if (op.textContent === '+' || op.textContent === '-'){
+            eqn += op.textContent;
+        };
         document.getElementById('equation').innerHTML = '';
         document.getElementById('equation').innerHTML = eqn;
-        // console.log(eqn);
         return eqn;
     });
 });
@@ -87,21 +90,21 @@ clear.addEventListener('click', function(){
     console.log('Cleared All')
 });
 
-let num = '12+7-5×3÷5';
+let num = '10×12+7-5×3÷5';
 
-let plus_pos = 0;
-let minus_pos = 0;
-let multiply_pos = 0;
-let divide_pos = 0;
+let plus_pos = [];
+let minus_pos = [];
+let multiply_pos = [];
+let divide_pos = [];
 for (i = 0; i < num.length; i++) {
     if (num[i] === '+'){
-        plus_pos = i;
+        plus_pos.push(i);
     } else if (num[i] === '-'){
-        minus_pos = i;
+        minus_pos.push(i);
     } else if (num[i] === '×'){
-        multiply_pos = i;
+        multiply_pos.push(i);
     } else if (num[i] === '÷'){
-        divide_pos = i;
+        divide_pos.push(i);
     };
 };
 
