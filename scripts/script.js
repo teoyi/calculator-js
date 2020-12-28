@@ -16,11 +16,42 @@ function operate(operator, a, b){
     };
 };
 
+// Modifying Eqn to a suitable array form for manipulation
+// Output will be in the following: 
+// Split the string at operator's position
+// Replace values with a minus sign with the same negative value 
+// Following that replace minus sign into a plus 
+function modEqn(str){
+    str = str.split(/([+,--,*,/])/);
+    for (i = 0; i < str.length; i++){
+        if (str[i-1] === '-') {
+            str.splice(i, 1, '-' + str[i]);
+            str.splice(i-1, 1, '+');
+        };
+    };
+    return str;
+};
+
+// Apply Operate function that fulfills the conditions
+function apply(eqnArr) {
+    for (i = 0; i < eqnArr.length; i++){
+        if (eqnArr[i] === prio_op[operandN]){
+                output = operate(prio_op[operandN], parseFloat(eqnArr[i-1]), parseFloat(eqnArr[i+1])).toString();
+                eqnArr[i] = output;
+                eqnArr.splice(i-1, 1);
+                eqnArr.splice(i, 1);
+                // console.log(eqnArr);
+        };
+    };
+};
+
+
 const result = document.querySelector('#result');
 const equation = document.querySelector('#equation');
 const ops = document.querySelectorAll('.op')
 const digits = document.querySelectorAll('.digit');
 
+let prio_op = ['*', '/', '+', '-'];
 let eqn = '';
 let output = 0;
 
@@ -39,9 +70,11 @@ ops.forEach(op => {
             eqn += '/';
         } else if (op.textContent === '×'){
             eqn += '*';
-        } else if (op.textContent === '+' || op.textContent === '-'){
+        } else if (op.textContent === '+'){
             eqn += op.textContent;
-        };
+        } else if (op.textContent === '−'){
+            eqn += op.textContent;
+        }
         document.getElementById('equation').innerHTML = '';
         document.getElementById('equation').innerHTML = eqn;
         return eqn;
@@ -76,59 +109,17 @@ clear.addEventListener('click', function(){
 // Evaluate Equation Line 
 const evaluate = document.querySelector('#equal')
 evaluate.addEventListener('click', function(){
-    let prio_op = ['*', '/', '+', '-'];
-    eqn = eqn.split(/([+,--,*,/])/);
-    console.log(eqn);
-
-    for (operandN = 0; operandN < prio_op.length; operandN++){
-        console.log(prio_op[operandN]);
-        for (i = 0; i < eqn.length; i++){
-            if (eqn === prio_op[operandN]) {
-                console.log(eqn);
-                output = operate(prio_op[operandN], parseFloat(eqn[i-1]), parseFloat(eqn[i+1])).toString();
-                eqn[i] = output;
-                eqn.splice(i-1, 1);
-                eqn.splice(i, 1);
-                console.log(eqn);
+    eqn = modEqn(eqn);
+    while (eqn.length !== 1){
+        for (operandN = 0; operandN < prio_op.length; operandN++){
+            console.log(prio_op[operandN]);
+            while (eqn.includes(prio_op[operandN])){
+                apply(eqn);
             };
         };
     };
     document.getElementById('result').innerHTML = eqn;
 });
 
-
-// function locate(eqn) {
-//     let operand = ['+', '-', '*', '/'];
-//     let tempArr = [];
-//     for (i = 0; i < eqn.length; i++){
-//         if (operand.includes(eqn[i])) {
-//             tempArr.push([eqn[i], i]);
-//         };
-//     };
-//     return tempArr;
-// };
-
-
-let num = '10*12+7-5*3/5';
-let bum = '1+3+6'
-
-num = num.split(/([+,--,*,/])/);
-console.log(num);
-console.log('top is original')
-prio_op = ['*', '/', '+', '-'];
-
-
-for (operandN = 0; operandN < prio_op.length; operandN++){
-    console.log(prio_op[operandN]);
-    for (i = 0; i < num.length; i++){
-        if (num[i] === prio_op[operandN]){
-            output = operate(prio_op[operandN], parseFloat(num[i-1]), parseFloat(num[i+1])).toString();
-            num[i] = output;
-            num.splice(i-1, 1);
-            num.splice(i, 1);
-            console.log(num);
-        };
-    };
-};
 
 
