@@ -1,35 +1,18 @@
-// Basic Arithmetic Functions 
-function add(a, b){
-    return a + b;
-};
-
-function minus(a, b){
-    return a - b;
-};
-
-function multiply(a, b){
-    return a * b;
-};
-
-function divide(a, b){
-    if (b == 0) {
-        return "Undefined";
-    } else {
-    return a / b
-    }
-}
-
 // Operation Function 
 
 function operate(operator, a, b){
     if (operator === '+'){
-        return add(a,b);
+        return a + b;
     } else if (operator === '-'){
-        return minus(a,b);
+        return a - b;
     } else if (operator === '*'){
-        return multiply(a,b);
+        return a * b;
     } else if (operator === '/'){
-        return divide(a,b);
+        if (b == 0) {
+            return "Undefined";
+        } else {
+            return a / b;
+        };
     };
 };
 
