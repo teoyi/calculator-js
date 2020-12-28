@@ -58,7 +58,11 @@ let output = 0;
 // Button Click Functionality 
 digits.forEach(digit => {
     digit.addEventListener('click', function(){
-        eqn += digit.textContent;
+        if (digit.textContent === 'ANS'){
+            eqn += output;
+        } else {
+            eqn += digit.textContent;
+        }
         document.getElementById('equation').innerHTML = '';
         document.getElementById('equation').innerHTML = eqn;
     });
@@ -118,7 +122,10 @@ evaluate.addEventListener('click', function(){
             };
         };
     };
+    output = eqn[0];
     document.getElementById('result').innerHTML = eqn;
+    console.log(eqn);
+    console.log(output);
 });
 
 
