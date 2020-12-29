@@ -151,7 +151,7 @@ evaluate.addEventListener('click', function(){
 
 window.onkeydown = function(e){
     let x = e.key;
-    let choice
+    let choice;
     switch(x){
         case '1':
             choice = document.querySelector('#one');
