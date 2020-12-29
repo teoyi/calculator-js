@@ -59,6 +59,8 @@ let prio_op = ['*', '/', '+', '-'];
 let eqn = '';
 let output = 0;
 
+// Handling Keyboard Support 
+
 // Button Click Functionality 
 digits.forEach(digit => {
     digit.addEventListener('click', function(){
@@ -67,7 +69,6 @@ digits.forEach(digit => {
         } else {
             eqn += digit.textContent;
         }
-        document.getElementById('equation').innerHTML = '';
         document.getElementById('equation').innerHTML = eqn;
         del.disabled = false;
     });
@@ -84,7 +85,6 @@ ops.forEach(op => {
         } else if (op.textContent === '−'){
             eqn += op.textContent;
         }
-        document.getElementById('equation').innerHTML = '';
         document.getElementById('equation').innerHTML = eqn;
         del.disabled = false;
         decimal.disabled = false;
@@ -92,14 +92,13 @@ ops.forEach(op => {
     });
 });
 
+// Inclusion of Decimal Points
 const decimal = document.querySelector('#decimal');
 decimal.addEventListener('click', function(){
     eqn += decimal.textContent.toString();
-    document.getElementById('equation').innerHTML = '';
     document.getElementById('equation').innerHTML = eqn;
     decimal.disabled = true;
 })
-console.log(decimal.textContent)
 
 // Backspace Functionality
 const del = document.querySelector("#delete");
@@ -140,15 +139,93 @@ evaluate.addEventListener('click', function(){
             };
         };
     };
-    // output = eqn[0];
-    document.getElementById('result').innerHTML = roundAccurately(eqn[0], 15);
+    document.getElementById('result').innerHTML = round(eqn[0], 15);
     del.disabled = true;
     decimal.disabled = false;
-    console.log(eqn);
-    console.log(output);
-    console.log(parseFloat(eqn[0]).toFixed(3));
 });
 
+window.onkeydown = function(e){
+    let x = e.key;
+    let choice
+    switch(x){
+        case '1':
+            choice = document.querySelector('#one');
+            choice.click();
+            break;
+        case '2':
+            choice = document.querySelector('#two');
+            choice.click();
+            break;
+        case '3':
+            choice = document.querySelector('#three');
+            choice.click();
+            break;
+        case'4':
+            choice = document.querySelector('#four');
+            choice.click();
+            break;
+        case '5':
+            choice = document.querySelector('#five');
+            choice.click();
+            break;
+        case '6':
+            choice = document.querySelector('#six');
+            choice.click();
+            break;
+        case '7':
+            choice = document.querySelector('#seven');
+            choice.click();
+            break;
+        case '8':
+            choice = document.querySelector('#eight');
+            choice.click();
+            break;
+        case '9':
+            choice = document.querySelector('#nine');
+            choice.click();
+            break;
+        case '0':
+            choice = document.querySelector('#zero');
+            choice.click();
+            break;
+        case 'Escape':
+            choice = document.querySelector('#clear');
+            choice.click();
+            break;
+        case 'Backspace':
+            choice = document.querySelector('#delete');
+            choice.click();
+            break;
+        case '/':
+            choice = document.querySelector('#divide');
+            choice.click();
+            break;
+        case '*':
+            choice = document.querySelector('#multiply');
+            choice.click();
+            break;
+        case '-':
+            choice = document.querySelector('#subtract');
+            choice.click();
+            break;
+        case '+':
+            choice = document.querySelector('#add');
+            choice.click();
+            break;
+        case '.':
+            choice = document.querySelector('#decimal');
+            choice.click();
+            break;
+        case 'Enter':
+            choice = document.querySelector('#equal');
+            choice.click();
+            break;
+        case '`':
+            choice = document.querySelector('#prev_ans');
+            choice.click();
+            break;
+    }
+}
 
 
 
