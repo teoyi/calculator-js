@@ -123,7 +123,6 @@ clear.addEventListener('click', function(){
     del.disabled = false;
     decimal.disabled = false;
     eqn = '';
-    output = 0;
     console.log('Cleared All')
 });
 
