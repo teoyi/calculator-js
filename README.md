@@ -8,6 +8,7 @@ It comes with an equation line as well as an output line to keep track of user's
 It is also built with keyboard compatibility, numerical keys will be as they are and so do the operators (+, -, *, /), along with additional keys:
 1. Esc = Clear All 
 2. ~ = Previously Saved Answer 
+3. Backspace = Delete Previous Key Entry
 
 
 ## Preview
