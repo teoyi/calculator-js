@@ -65,6 +65,7 @@ digits.forEach(digit => {
         }
         document.getElementById('equation').innerHTML = '';
         document.getElementById('equation').innerHTML = eqn;
+        del.disabled = false;
     });
 });
 
@@ -81,6 +82,7 @@ ops.forEach(op => {
         }
         document.getElementById('equation').innerHTML = '';
         document.getElementById('equation').innerHTML = eqn;
+        del.disabled = false;
         return eqn;
     });
 });
@@ -90,7 +92,7 @@ const del = document.querySelector("#delete");
 del.addEventListener('click', function(){
     eqn = eqn.slice(0, -1);
     if (!eqn) {
-        document.getElementById('equation').innerHTML = '---';
+        document.getElementById('equation').innerHTML = '&nbsp;';
         console.log('Returned to empty string');
         return eqn;
     } else {
@@ -103,8 +105,9 @@ del.addEventListener('click', function(){
 // Clear all Functionality 
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', function(){
-    document.getElementById('equation').innerHTML = '---';
+    document.getElementById('equation').innerHTML = '&nbsp;';
     document.getElementById('result').innerHTML = '0';
+    del.disabled = false;
     eqn = '';
     output = 0;
     console.log('Cleared All')
@@ -124,6 +127,7 @@ evaluate.addEventListener('click', function(){
     };
     output = eqn[0];
     document.getElementById('result').innerHTML = eqn;
+    del.disabled = true;
     console.log(eqn);
     console.log(output);
 });
