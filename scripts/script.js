@@ -9,7 +9,7 @@ function operate(operator, a, b){
         return a * b;
     } else if (operator === '/'){
         if (b == 0) {
-            return "Undefined";
+            return "(┛◉Д◉)┛彡┻━┻";
         } else {
             return a / b;
         };
@@ -139,7 +139,12 @@ evaluate.addEventListener('click', function(){
             };
         };
     };
-    document.getElementById('result').innerHTML = round(eqn[0], 15);
+    if (eqn == '(┛◉Д◉)┛彡┻━┻') {
+        document.getElementById('result').innerHTML = '(┛◉Д◉)┛彡┻━┻';
+    } else {
+        document.getElementById('result').innerHTML = round(eqn[0], 15);
+    }
+    //document.getElementById('result').innerHTML = round(eqn[0], 15);
     del.disabled = true;
     decimal.disabled = false;
 });
