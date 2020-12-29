@@ -45,6 +45,10 @@ function apply(eqnArr) {
     };
 };
 
+// Rounding Decimals Value 
+function round(num, places) {
+    return parseFloat(Math.round(num + 'e' + places) + 'e-' + places);
+}
 
 const result = document.querySelector('#result');
 const equation = document.querySelector('#equation');
@@ -83,9 +87,19 @@ ops.forEach(op => {
         document.getElementById('equation').innerHTML = '';
         document.getElementById('equation').innerHTML = eqn;
         del.disabled = false;
+        decimal.disabled = false;
         return eqn;
     });
 });
+
+const decimal = document.querySelector('#decimal');
+decimal.addEventListener('click', function(){
+    eqn += decimal.textContent.toString();
+    document.getElementById('equation').innerHTML = '';
+    document.getElementById('equation').innerHTML = eqn;
+    decimal.disabled = true;
+})
+console.log(decimal.textContent)
 
 // Backspace Functionality
 const del = document.querySelector("#delete");
@@ -108,6 +122,7 @@ clear.addEventListener('click', function(){
     document.getElementById('equation').innerHTML = '&nbsp;';
     document.getElementById('result').innerHTML = '0';
     del.disabled = false;
+    decimal.disabled = false;
     eqn = '';
     output = 0;
     console.log('Cleared All')
@@ -125,12 +140,16 @@ evaluate.addEventListener('click', function(){
             };
         };
     };
-    output = eqn[0];
-    document.getElementById('result').innerHTML = eqn;
+    // output = eqn[0];
+    document.getElementById('result').innerHTML = roundAccurately(eqn[0], 15);
     del.disabled = true;
+    decimal.disabled = false;
     console.log(eqn);
     console.log(output);
+    console.log(parseFloat(eqn[0]).toFixed(3));
 });
+
+
 
 
 
